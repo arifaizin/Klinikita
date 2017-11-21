@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.klinikita.androidapp.view.chat.ChatKlinikita">
+
+    <TextView
+        android:background="#ff022e"
+        android:id="@+id/tv_chat"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Konsultasi"
+        android:textColor="@color/cardview_light_background"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="center"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_chat"
+        android:layout_below="@id/tv_chat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

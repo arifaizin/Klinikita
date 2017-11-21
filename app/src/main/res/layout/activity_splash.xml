@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.klinikita.androidapp.view.splash.ActivitySplash">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_height="match_parent"
+        android:background="#ff0202"/>
+    <ImageView
+        android:id="@+id/iv_klinik"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/kli"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+    <ProgressBar
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/iv_klinik"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
