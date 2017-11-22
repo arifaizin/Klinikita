@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
 android:layout_width="match_parent"
     android:orientation="vertical"
@@ -298,15 +297,17 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
         </LinearLayout>
     </ScrollView>
-    <TextView
+
+    <Button
+        android:id="@+id/btnPesan"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="0"
-        android:text="PESAN"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
+        android:layout_weight="0"
+        android:background="#ff022e"
         android:gravity="center_horizontal"
+        android:text="PESAN"
         android:textColor="#ffffff"
-        android:textSize="30dp"
-        android:background="#ff022e"/>
+        android:textSize="30dp" />
 </LinearLayout>
 

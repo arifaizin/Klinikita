@@ -26,6 +26,7 @@
             android:name=".view.home.HomeActivity"
             android:label="@string/title_activity_main" />
         <activity android:name=".view.beliobat.BeliObatActivity" />
+        <activity android:name=".view.beliobat.DetailObatActivity" />
         <activity android:name=".view.konsultasi.KonsultasiActivity" />
         <activity android:name=".view.periksa.PeriksaActivity" />
         <activity android:name=".view.rekammedis.RekamMedisActivity" />

@@ -29,6 +29,8 @@ public class BeliObatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beli_obat);
+
+        getSupportActionBar().setTitle("Pilih Obat");
         recyclerView = (RecyclerView) findViewById(R.id.recyler_view);
 
         //Data

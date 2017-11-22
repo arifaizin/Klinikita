@@ -4,10 +4,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.klinikita.androidapp.R;
+import com.klinikita.androidapp.helper.Konstanta;
 
 public class DetailObatActivity extends AppCompatActivity {
     //logt
@@ -18,6 +20,8 @@ public class DetailObatActivity extends AppCompatActivity {
     SharedPreferences pref;
     FloatingActionButton fab;
     private Button btnBeli;
+    private String dataId;
+    private String dataHarga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +31,13 @@ public class DetailObatActivity extends AppCompatActivity {
 //        setSupportActionBar(toolbar);
 
         //terima data
-//        dataNama = getIntent().getExtras().getString(Konstanta.DATA_NAMA);
-//        dataAlamat = getIntent().getExtras().getString(Konstanta.DATA_ALAMAT);
-//        dataDeskripsi = getIntent().getExtras().getString(Konstanta.DATA_DESKRIPSI);
-//        dataGambar = getIntent().getExtras().getString(Konstanta.DATA_GAMBAR);
+        dataId = getIntent().getExtras().getString(Konstanta.DATA_ID);
+        dataNama = getIntent().getExtras().getString(Konstanta.DATA_NAMA);
+        dataDeskripsi = getIntent().getExtras().getString(Konstanta.DATA_DESKRIPSI);
+        dataGambar = getIntent().getExtras().getString(Konstanta.DATA_GAMBAR);
+        dataHarga = getIntent().getExtras().getString(Konstanta.DATA_HARGA);
+
+        Log.d(TAG, "onCreate: "+ dataId+dataNama+dataHarga+dataGambar+dataDeskripsi);
 //
 //        //logd untuk menampilkan di logcat
 //        Log.d(TAG, "onCreate: " + dataNama + dataGambar + dataDeskripsi + dataAlamat);
@@ -120,6 +127,6 @@ public class DetailObatActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        btnBeli = (Button) findViewById(R.id.btn_beli);
+        btnBeli = (Button) findViewById(R.id.btnPesan);
     }
 }

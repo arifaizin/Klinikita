@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.klinikita.androidapp.R;
+import com.klinikita.androidapp.helper.Konstanta;
 
 import java.util.ArrayList;
 
@@ -48,28 +49,21 @@ public class ObatAdapter extends  RecyclerView.Adapter<ObatAdapter.MyViewHolder>
                 .into(holder.ivGambarWisata);
 
         ///untuk kirim data
-//        final Bundle datakiriman = new Bundle();
-//        datakiriman.putString(Konstanta.DATA_NAMA,listData.get(position).getNamaWisata());
-//        datakiriman.putString(Konstanta.DATA_ALAMAT,listData.get(position).getAlamatWisata());
-//        datakiriman.putString(Konstanta.DATA_GAMBAR,listData.get(position).getGambarWisata());
-//        datakiriman.putString(Konstanta.DATA_DESKRIPSI,listData.get(position).getDeksripsiWisata());
+        final Bundle datakiriman = new Bundle();
+        datakiriman.putString(Konstanta.DATA_ID,listData.get(position).getIdObat());
+        datakiriman.putString(Konstanta.DATA_NAMA,listData.get(position).getNamaObat());
+        datakiriman.putString(Konstanta.DATA_GAMBAR,listData.get(position).getGambarObat());
+        datakiriman.putString(Konstanta.DATA_DESKRIPSI,listData.get(position).getDeskripsiObat());
+        datakiriman.putString(Konstanta.DATA_HARGA,listData.get(position).getHargaObat());
 
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent pindah = new Intent(context, DetailObatActivity.class);
-//                pindah.putExtras(datakiriman);
-//                context.startActivity(pindah);
-//            }
-//        });
-
-
-
-
-
-
-
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pindah = new Intent(context, DetailObatActivity.class);
+                pindah.putExtras(datakiriman);
+                context.startActivity(pindah);
+            }
+        });
 
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
 //            @Override
