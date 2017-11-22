@@ -7,9 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.klinikita.androidapp.R;
 import com.klinikita.androidapp.helper.Konstanta;
+
+import org.w3c.dom.Text;
 
 public class DetailObatActivity extends AppCompatActivity {
     //logt
@@ -22,6 +26,8 @@ public class DetailObatActivity extends AppCompatActivity {
     private Button btnBeli;
     private String dataId;
     private String dataHarga;
+    TextView hargaobat;
+    int quantity=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,7 @@ public class DetailObatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_obat);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+         hargaobat=(TextView)findViewById(R.id.HargaObat);
 
         //terima data
         dataId = getIntent().getExtras().getString(Konstanta.DATA_ID);
@@ -36,6 +43,8 @@ public class DetailObatActivity extends AppCompatActivity {
         dataDeskripsi = getIntent().getExtras().getString(Konstanta.DATA_DESKRIPSI);
         dataGambar = getIntent().getExtras().getString(Konstanta.DATA_GAMBAR);
         dataHarga = getIntent().getExtras().getString(Konstanta.DATA_HARGA);
+
+        hargaobat.setText(dataHarga);
 
         Log.d(TAG, "onCreate: "+ dataId+dataNama+dataHarga+dataGambar+dataDeskripsi);
 //
@@ -124,6 +133,28 @@ public class DetailObatActivity extends AppCompatActivity {
 
     private void kirimNotif() {
 
+    }
+    public void kurang(View v){
+        if(quantity==1){
+            Toast.makeText(this,"pesanan minimal 1",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        quantity = quantity-1 ;
+        hargaobat.setText(""+Integer.parseInt(dataHarga)*quantity);
+        display(quantity);
+    }
+    public void tambah(View v){
+        if (quantity==100){
+            Toast.makeText(this,"pesanan maximal 100",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        quantity=quantity+1;
+        hargaobat.setText(""+Integer.parseInt(dataHarga)*quantity);
+        display(quantity);
+    }
+    private void display(int number) {
+        TextView jumlahobat= (TextView) findViewById(R.id.jmlobat);
+        jumlahobat.setText("" + number);
     }
 
     private void initView() {
