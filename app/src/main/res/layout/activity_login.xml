@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        android:background="@drawable/bgnd" />
+        android:background="@drawable/abc" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/klinik" />
+                 />
 
             <TextView
                 android:id="@+id/textView4"
@@ -62,7 +62,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     app:cardCornerRadius="10dp">
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
