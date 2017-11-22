@@ -4,11 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.klinikita.androidapp.view.beliobat.BeliObatActivity">
+    tools:context=".view.beliobat.DetailObatActivity">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 </android.support.constraint.ConstraintLayout>

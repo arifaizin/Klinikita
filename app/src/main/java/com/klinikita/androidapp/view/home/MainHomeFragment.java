@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.klinikita.androidapp.R;
+import com.klinikita.androidapp.view.beliobat.BeliObatActivity;
 import com.klinikita.androidapp.view.chat.ChatKlinikita;
 import com.klinikita.androidapp.view.chat.DokterKlinikita;
 import com.klinikita.androidapp.view.chat.adapter.DokterAdapter;
@@ -66,13 +67,13 @@ public class MainHomeFragment extends Fragment {
                 Toast.makeText(getActivity(), "Ke Rekam Medis", Toast.LENGTH_SHORT).show();
             }
         });
-//        beliObat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//               Intent i = new Intent(getContext(),ChatKlinikita.class);
-//                getContext().startActivity(i);
-//            }
-//        });
+        beliObat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent i = new Intent(getContext(),BeliObatActivity.class);
+                getContext().startActivity(i);
+            }
+        });
         konsultasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
