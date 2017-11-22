@@ -1,6 +1,7 @@
 package com.klinikita.androidapp.view.auth.register;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -10,6 +11,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,8 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         pref = getSharedPreferences(Konstanta.SETTING, MODE_PRIVATE);
         initView();
-
-        TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//
+//        TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -62,10 +64,18 @@ public class RegisterActivity extends AppCompatActivity {
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        String number = tm.getLine1Number();
+//        String number = tm.getLine1Number();
+//        Log.d("Reg", "onCreate: "+number);
+
+        TelephonyManager tManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        String getSimSerialNumber = tManager.getSimSerialNumber();
+        String getSimNumber = tManager.getLine1Number();
+
+        Log.v("Reg", "getSimSerialNumber : " + getSimSerialNumber +" ,getSimNumber : "+ getSimNumber);
+
         AlertDialog.Builder alert = new AlertDialog.Builder(RegisterActivity.this);
         alert.setTitle("Pakai nomer ini?");
-        alert.setMessage(number);
+        alert.setMessage(getSimNumber+getSimSerialNumber);
         alert.show();
     }
 

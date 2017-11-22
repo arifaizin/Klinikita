@@ -172,7 +172,7 @@ public class DetailObatActivity extends AppCompatActivity {
 //        Toast.makeText(this, ""+nomertelp, Toast.LENGTH_SHORT).show();
 
         ApiService api = Client.getApiService(Config.BASE_URL_SMSNOTIF);
-        Call<ResponseBody> call = api.kirimNotif(nomertelp, "Terima kasih sudah melakukan pemesanan Obat di Klinik Kita. Silahkan lakukan pembayaran segera sejumlah Rp123.000 ke Rek.");
+        Call<ResponseBody> call = api.kirimNotif(nomertelp, "Terima kasih sudah melakukan pemesanan Obat di Klinik Kita. Silahkan lakukan pembayaran segera sejumlah "+ biayaantar.getText().toString() +"ke Rek. 324424234 a.n Kalif Ardy sebelum pukul 16.00");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -211,7 +211,7 @@ public class DetailObatActivity extends AppCompatActivity {
         quantity = quantity - 1;
         hargaobat.setText("" + Integer.parseInt(dataHarga) * quantity);
         perkiraanharga.setText("" + Integer.parseInt(dataHarga) * quantity);
-        biayaantar.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+        biayaantar.setText("" + (5000));
         totalharga.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
         bayartunai.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
 
@@ -226,7 +226,7 @@ public class DetailObatActivity extends AppCompatActivity {
         quantity = quantity + 1;
         hargaobat.setText("" + Integer.parseInt(dataHarga) * quantity);
         perkiraanharga.setText("" + Integer.parseInt(dataHarga) * quantity);
-        biayaantar.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+        biayaantar.setText("" + (5000));
         totalharga.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
         bayartunai.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
 
