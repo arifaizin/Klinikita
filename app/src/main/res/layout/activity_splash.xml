@@ -5,18 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#cb4436"
     tools:context="com.klinikita.androidapp.view.splash.ActivitySplash">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_centerInParent="true"
-        android:layout_height="match_parent"
-        android:background="#ff0202"/>
+
     <ImageView
         android:id="@+id/iv_klinik"
-        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/kli"
+        android:src="@drawable/splashscreenb"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
     <ProgressBar
