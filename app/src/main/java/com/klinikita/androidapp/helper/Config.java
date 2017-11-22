@@ -6,5 +6,5 @@ package com.klinikita.androidapp.helper;
 
 public class Config {
     public static final String URL_AMBIL_DATA = "macros/s/AKfycbygukdW3tt8sCPcFDlkMnMuNu9bH5fpt7bKV50p2bM/exec?id=1LhvifQnMUPu-MjxXyw26zmwLvAsk6vSmlAV5uh1zwus&sheet=obat";
-    public static final String BASE_URL = "https://script.google.com/";
+    public static final String BASE_URL_SHEET = "https://script.google.com/";
 }

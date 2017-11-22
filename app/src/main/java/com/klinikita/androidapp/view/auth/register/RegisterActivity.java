@@ -17,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daftar);
         getSupportActionBar().hide();
 
+
     }
 
     public void login(View view) {

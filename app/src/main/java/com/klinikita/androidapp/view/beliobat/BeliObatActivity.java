@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.klinikita.androidapp.R;
+import com.klinikita.androidapp.helper.Config;
 import com.klinikita.androidapp.rest.ApiService;
 import com.klinikita.androidapp.rest.Client;
 
@@ -53,7 +54,7 @@ public class BeliObatActivity extends AppCompatActivity {
         progress.setMessage("Mohon Bersabar");
         progress.show();
 
-        ApiService api = Client.getApiService();
+        ApiService api = Client.getApiService(Config.BASE_URL_SHEET);
         Call<ListObatModel> call = api.ambilData();
         call.enqueue(new Callback<ListObatModel>() {
             @Override
