@@ -22,7 +22,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void masuk(View view) {
-        Intent intent = new Intent(LoginActivity.this,OTPActivity.class);
+//        Intent intent = new Intent(LoginActivity.this,OTPActivity.class);
+        Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
         startActivity(intent);
         finish();
     }

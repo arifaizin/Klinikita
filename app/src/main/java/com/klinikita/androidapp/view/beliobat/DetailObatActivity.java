@@ -1,35 +1,32 @@
-//package com.klinikita.androidapp.view.beliobat;
-//
-//import android.content.SharedPreferences;
-//import android.support.design.widget.FloatingActionButton;
-//import android.support.design.widget.Snackbar;
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.util.Log;
-//import android.view.View;
-//import android.widget.ImageView;
-//import android.widget.TextView;
-//import android.widget.Toolbar;
-//
-//import com.klinikita.androidapp.R;
-//
-//public class DetailObatActivity extends AppCompatActivity {
-//    //logt
-//    private static final String TAG = "DetailWisataActivity";
-//
-//    String dataNama, dataAlamat, dataDeskripsi, dataGambar;
-//    Boolean isFavorit;
-//    SharedPreferences pref;
-//    FloatingActionButton fab;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_detail_obat);
+package com.klinikita.androidapp.view.beliobat;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+
+import com.klinikita.androidapp.R;
+
+public class DetailObatActivity extends AppCompatActivity {
+    //logt
+    private static final String TAG = "DetailWisataActivity";
+
+    String dataNama, dataAlamat, dataDeskripsi, dataGambar;
+    Boolean isFavorit;
+    SharedPreferences pref;
+    FloatingActionButton fab;
+    private Button btnBeli;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_detail_obat);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-//
-//        //terima data
+
+        //terima data
 //        dataNama = getIntent().getExtras().getString(Konstanta.DATA_NAMA);
 //        dataAlamat = getIntent().getExtras().getString(Konstanta.DATA_ALAMAT);
 //        dataDeskripsi = getIntent().getExtras().getString(Konstanta.DATA_DESKRIPSI);
@@ -107,16 +104,22 @@
 //        Glide.with(DetailObatActivity.this).load("http://52.187.117.60/wisata_semarang/img/wisata/"+dataGambar).into(ivGambar);
 //
 //        getSupportActionBar().setTitle(dataNama);
-//
-//    }
-//
-//    private void cekFavorit(Boolean isFavorit) {
-//        //kalau true image favorit
-//        //kalau false image notfavorit
-//        if (isFavorit){
-//            fab.setImageResource(R.drawable.ic_action_isfavorit);
-//        } else {
-//            fab.setImageResource(R.drawable.ic_action_isnotfavorit);
-//        }
-//    }
-//}
+
+        initView();
+
+        btnBeli.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kirimNotif();
+            }
+        });
+    }
+
+    private void kirimNotif() {
+
+    }
+
+    private void initView() {
+        btnBeli = (Button) findViewById(R.id.btn_beli);
+    }
+}

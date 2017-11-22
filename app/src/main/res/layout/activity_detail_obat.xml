@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".view.beliobat.DetailObatActivity">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_beli"
+        android:text="beli"/>
+
 </android.support.constraint.ConstraintLayout>

@@ -5,8 +5,11 @@ import com.klinikita.androidapp.view.beliobat.ListObatModel;
 
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -18,6 +21,14 @@ public interface ApiService {
     @GET(Config.URL_AMBIL_DATA)
     Call<ListObatModel> ambilData();
 
+    @Headers({
+            "Accept: application/json",
+            "Content-Type: application/x-www-form-urlencoded",
+            "Authorization: Bearer <977afdbf22ee3a2096eb46b1415c2ba6>"
+    })
+    @POST("/messages")
+    Call<ResponseBody> kirimNotif(@Field("msisdn") String msisdn,
+                                  @Field("content") String content);
 
 
 //
