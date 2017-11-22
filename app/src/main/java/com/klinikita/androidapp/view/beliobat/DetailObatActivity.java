@@ -1,5 +1,6 @@
 package com.klinikita.androidapp.view.beliobat;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,9 +8,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.klinikita.androidapp.R;
+import com.klinikita.androidapp.helper.Config;
 import com.klinikita.androidapp.helper.Konstanta;
+import com.klinikita.androidapp.rest.ApiService;
+import com.klinikita.androidapp.rest.Client;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailObatActivity extends AppCompatActivity {
     //logt
@@ -123,7 +138,45 @@ public class DetailObatActivity extends AppCompatActivity {
     }
 
     private void kirimNotif() {
+        final ProgressDialog progress = new ProgressDialog(DetailObatActivity.this);
+        progress.setTitle("Loading");
+        progress.setMessage("Mohon Bersabar");
+        progress.show();
 
+        SharedPreferences pref = getSharedPreferences(Konstanta.SETTING, MODE_PRIVATE);
+        String nomertelp = pref.getString(Konstanta.NO_TELP,"08");
+//        Toast.makeText(this, ""+nomertelp, Toast.LENGTH_SHORT).show();
+
+        ApiService api = Client.getApiService(Config.BASE_URL_SMSNOTIF);
+        Call<ResponseBody> call = api.kirimNotif(nomertelp, "Terima kasih sudah melakukan pemesanan Obat di Klinik Kita. Silahkan lakukan pembayaran segera sejumlah Rp123.000 ke Rek.");
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                progress.dismiss();
+                if (response.isSuccessful()){
+                    JSONObject json = null;
+                    try {
+                        json = new JSONObject(response.body().string());
+                        String message = json.getString("message");
+                        Toast.makeText(DetailObatActivity.this, ""+message, Toast.LENGTH_SHORT).show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+//                    Toast.makeText(DetailObatActivity.this, "Berhasil", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(DetailObatActivity.this, "Not Success", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(DetailObatActivity.this, "Failure", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initView() {

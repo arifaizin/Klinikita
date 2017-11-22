@@ -10,4 +10,6 @@ public class Konstanta {
     public static final String DATA_GAMBAR = "gambaro";
     public static final String DATA_DESKRIPSI = "desko";
     public static final String DATA_HARGA = "hargao";
+    public static final String SETTING = "setting";
+    public static final String NO_TELP = "notelp";
 }

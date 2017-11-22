@@ -73,7 +73,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center"
-                            android:text="Masukan No Hp / Email anda"
+                            android:text="Masukan No Hp"
                             android:textColor="#2d2b2b" />
 
                         <LinearLayout
@@ -95,9 +95,10 @@
                                 android:layout_height="wrap_content">
 
                                 <android.support.design.widget.TextInputEditText
+                                    android:id="@+id/tv_nomer"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:hint="Nomor telepon atau email" />
+                                    android:hint="Nomor telepon" />
 
                             </android.support.design.widget.TextInputLayout>
 

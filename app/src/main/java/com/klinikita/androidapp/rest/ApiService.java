@@ -3,15 +3,14 @@ package com.klinikita.androidapp.rest;
 import com.klinikita.androidapp.helper.Config;
 import com.klinikita.androidapp.view.beliobat.ListObatModel;
 
-import java.util.ArrayList;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
+import retrofit2.http.PUT;
 
 /**
  * Created by idn on 8/12/2017.
@@ -24,13 +23,34 @@ public interface ApiService {
     @Headers({
             "Accept: application/json",
             "Content-Type: application/x-www-form-urlencoded",
-            "Authorization: Bearer <977afdbf22ee3a2096eb46b1415c2ba6>"
+            "Authorization: Bearer e99b343a687ede0cf5be50cc42b02cdf"
     })
-    @POST("/messages")
+    @FormUrlEncoded
+    @POST("smsnotification/1.0.0/messages")
     Call<ResponseBody> kirimNotif(@Field("msisdn") String msisdn,
                                   @Field("content") String content);
 
+    @Headers({
+            "Accept: application/json",
+            "Content-Type: application/x-www-form-urlencoded",
+            "Authorization: Bearer e99b343a687ede0cf5be50cc42b02cdf"
+    })
+    @FormUrlEncoded
+    @PUT("smsotp/1.0.1/otp/keplok2")
+    Call<ResponseBody> kirimOTP (@Field("phoneNum") String phoneNum,
+                                 @Field("digit") String digit);
 
+
+
+    @Headers({
+            "Accept: application/json",
+            "Content-Type: application/x-www-form-urlencoded",
+            "Authorization: Bearer e99b343a687ede0cf5be50cc42b02cdf"
+    })
+    @FormUrlEncoded
+    @POST("smsotp/1.0.1/otp/keplok2/verifications")
+    Call<ResponseBody> verivikasiOTP (@Field("otpstr") String otpstr,
+                                 @Field("digit") String digit);
 //
 //    //    @FormUrlEncoded
 //    @POST(Config.URL_UPDATE)

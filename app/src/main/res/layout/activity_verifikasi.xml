@@ -45,20 +45,49 @@
             style="@style/PinWidget.PinView" />
 
     </LinearLayout>
+
     <Button
-        android:onClick="submit"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="submit"
-
-        android:textStyle="bold"/>
-    <TextView
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_back"
+        android:onClick="submit"
+
+        android:text="submit"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mengirimkan kode baru dalam"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:text="Kode tidak kekirim?" />
+
+    <TextView
+        android:id="@+id/tv_kirim_lagi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Kirim kode verifikasi lagi"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="- atau -" />
+
+    <TextView
+        android:id="@+id/tv_kode_suara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Gunakan kode suara"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
 
 </LinearLayout>
