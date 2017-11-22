@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/iv_klinik"
-        android:layout_width="match_parent"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/splashscreenb"
+        android:background="@drawable/splashscreenfix"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
     <ProgressBar
