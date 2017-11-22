@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.klinikita.androidapp.R;
 import com.klinikita.androidapp.helper.Konstanta;
 
-import org.w3c.dom.Text;
-
 public class DetailObatActivity extends AppCompatActivity {
     //logt
     private static final String TAG = "DetailWisataActivity";
@@ -27,7 +25,17 @@ public class DetailObatActivity extends AppCompatActivity {
     private String dataId;
     private String dataHarga;
     TextView hargaobat;
-    int quantity=0;
+    int quantity = 0;
+    private TextView Obat;
+    private TextView HargaObat;
+    private TextView Deskripsi;
+    private TextView tambahcatatan;
+    private TextView jmlobat;
+    private TextView perkiraanharga;
+    private TextView biayaantar;
+    private TextView totalharga;
+    private TextView bayartunai;
+    private Button btnPesan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +43,11 @@ public class DetailObatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_obat);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-         hargaobat=(TextView)findViewById(R.id.HargaObat);
+        hargaobat = (TextView) findViewById(R.id.HargaObat);
+        perkiraanharga = (TextView) findViewById(R.id.perkiraanharga);
+        biayaantar = (TextView) findViewById(R.id.biayaantar);
+        totalharga = (TextView) findViewById(R.id.totalharga);
+        bayartunai = (TextView) findViewById(R.id.bayartunai);
 
         //terima data
         dataId = getIntent().getExtras().getString(Konstanta.DATA_ID);
@@ -45,8 +57,12 @@ public class DetailObatActivity extends AppCompatActivity {
         dataHarga = getIntent().getExtras().getString(Konstanta.DATA_HARGA);
 
         hargaobat.setText(dataHarga);
+        perkiraanharga.setText(dataHarga);
+        biayaantar.setText(dataHarga);
+        totalharga.setText(dataHarga);
+        bayartunai.setText(dataHarga);
 
-        Log.d(TAG, "onCreate: "+ dataId+dataNama+dataHarga+dataGambar+dataDeskripsi);
+        Log.d(TAG, "onCreate: " + dataId + dataNama + dataHarga + dataGambar + dataDeskripsi);
 //
 //        //logd untuk menampilkan di logcat
 //        Log.d(TAG, "onCreate: " + dataNama + dataGambar + dataDeskripsi + dataAlamat);
@@ -134,30 +150,53 @@ public class DetailObatActivity extends AppCompatActivity {
     private void kirimNotif() {
 
     }
-    public void kurang(View v){
-        if(quantity==1){
-            Toast.makeText(this,"pesanan minimal 1",Toast.LENGTH_SHORT).show();
+
+    public void kurang(View v) {
+        if (quantity == 1) {
+            Toast.makeText(this, "pesanan minimal 1", Toast.LENGTH_SHORT).show();
             return;
         }
-        quantity = quantity-1 ;
-        hargaobat.setText(""+Integer.parseInt(dataHarga)*quantity);
+        quantity = quantity - 1;
+        hargaobat.setText("" + Integer.parseInt(dataHarga) * quantity);
+        perkiraanharga.setText("" + Integer.parseInt(dataHarga) * quantity);
+        biayaantar.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+        totalharga.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+        bayartunai.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+
         display(quantity);
     }
-    public void tambah(View v){
-        if (quantity==100){
-            Toast.makeText(this,"pesanan maximal 100",Toast.LENGTH_SHORT).show();
+
+    public void tambah(View v) {
+        if (quantity == 100) {
+            Toast.makeText(this, "pesanan maximal 100", Toast.LENGTH_SHORT).show();
             return;
         }
-        quantity=quantity+1;
-        hargaobat.setText(""+Integer.parseInt(dataHarga)*quantity);
+        quantity = quantity + 1;
+        hargaobat.setText("" + Integer.parseInt(dataHarga) * quantity);
+        perkiraanharga.setText("" + Integer.parseInt(dataHarga) * quantity);
+        biayaantar.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+        totalharga.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+        bayartunai.setText("" + ((Integer.parseInt(dataHarga) * quantity)+5000));
+
         display(quantity);
     }
+
     private void display(int number) {
-        TextView jumlahobat= (TextView) findViewById(R.id.jmlobat);
+        TextView jumlahobat = (TextView) findViewById(R.id.jmlobat);
         jumlahobat.setText("" + number);
     }
 
     private void initView() {
         btnBeli = (Button) findViewById(R.id.btnPesan);
+        Obat = findViewById(R.id.Obat);
+        HargaObat = findViewById(R.id.HargaObat);
+        Deskripsi = findViewById(R.id.Deskripsi);
+        tambahcatatan = findViewById(R.id.tambahcatatan);
+        jmlobat = findViewById(R.id.jmlobat);
+        perkiraanharga = findViewById(R.id.perkiraanharga);
+        biayaantar = findViewById(R.id.biayaantar);
+        totalharga = findViewById(R.id.totalharga);
+        bayartunai = findViewById(R.id.bayartunai);
+        btnPesan = findViewById(R.id.btnPesan);
     }
 }
