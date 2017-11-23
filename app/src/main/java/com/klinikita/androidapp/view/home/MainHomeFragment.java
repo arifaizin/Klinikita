@@ -13,9 +13,7 @@ import android.widget.Toast;
 import com.balysv.materialripple.MaterialRippleLayout;
 import com.klinikita.androidapp.R;
 import com.klinikita.androidapp.view.beliobat.BeliObatActivity;
-import com.klinikita.androidapp.view.chat.ChatKlinikita;
 import com.klinikita.androidapp.view.chat.DokterKlinikita;
-import com.klinikita.androidapp.view.chat.adapter.DokterAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +43,7 @@ public class MainHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main_home, container, false);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Klinikita Indonesia");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("NAMBANI");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setElevation(0);
 
         cvPeriksa = (MaterialRippleLayout) view.findViewById(R.id.ripple_periksa);

@@ -20,6 +20,9 @@ public interface ApiService {
     @GET(Config.URL_AMBIL_DATA)
     Call<ListObatModel> ambilData();
 
+    @GET(Config.URL_AMBIL_PESANAN)
+    Call<ListObatModel> ambilData();
+
     @Headers({
             "Accept: application/json",
             "Content-Type: application/x-www-form-urlencoded",

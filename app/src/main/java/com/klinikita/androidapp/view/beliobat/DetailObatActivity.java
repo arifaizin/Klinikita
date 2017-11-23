@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +42,7 @@ public class DetailObatActivity extends AppCompatActivity {
     SharedPreferences pref;
     FloatingActionButton fab;
     TextView hargaobat;
-    int quantity = 0;
+    int quantity = 1;
     String lat = "";
     String lng = "";
     private Button btnBeli;
@@ -61,6 +62,8 @@ public class DetailObatActivity extends AppCompatActivity {
     // konstanta untuk mendeteksi hasil balikan dari place picker
     private int PLACE_PICKER_REQUEST = 1;
     private TextView alamat;
+    private CardView placepicker;
+    private TextView ubahLokasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +84,6 @@ public class DetailObatActivity extends AppCompatActivity {
         dataGambar = getIntent().getExtras().getString(Konstanta.DATA_GAMBAR);
         dataHarga = getIntent().getExtras().getString(Konstanta.DATA_HARGA);
 
-
-
         btnBeli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,19 +91,19 @@ public class DetailObatActivity extends AppCompatActivity {
             }
         });
 
-        hargaobat.setText(dataHarga);
-        perkiraanharga.setText(dataHarga);
-        biayaantar.setText(dataHarga);
-        totalharga.setText(dataHarga);
-        bayartunai.setText(dataHarga);
+        hargaobat.setText("Rp. "+dataHarga);
+        perkiraanharga.setText("Rp. "+dataHarga);
+        biayaantar.setText("Rp. 5000");
+        totalharga.setText("Rp. "+dataHarga);
+        bayartunai.setText("Rp. "+dataHarga);
+        Obat.setText(dataNama);
+        Deskripsi.setText(dataDeskripsi);
 
         Log.d(TAG, "onCreate: " + dataId + dataNama + dataHarga + dataGambar + dataDeskripsi);
-        tvPlaceAPI = (TextView) findViewById(R.id.alamat);
 
-        tvPlaceAPI.setOnClickListener(new View.OnClickListener() {
+        ubahLokasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
                 try {
                     startActivityForResult(builder.build(DetailObatActivity.this), PLACE_PICKER_REQUEST);
@@ -111,7 +112,6 @@ public class DetailObatActivity extends AppCompatActivity {
                 } catch (GooglePlayServicesNotAvailableException e) {
                     e.printStackTrace();
                 }
-
             }
         });
     }
@@ -121,13 +121,11 @@ public class DetailObatActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         if (requestCode == PLACE_PICKER_REQUEST && resultCode == RESULT_OK) {
             Place place = PlacePicker.getPlace(imageReturnedIntent, DetailObatActivity.this);
-            String information = String.format("%s", place.getName());
+            String information = String.format("%s , %s", place.getName(), place.getAddress());
             lat = String.valueOf(place.getLatLng().latitude);
             lng = String.valueOf(place.getLatLng().longitude);
             alamat.setText(information);
         }
-
-
     }
 
     private void kirimNotif() {
@@ -141,7 +139,7 @@ public class DetailObatActivity extends AppCompatActivity {
 //        Toast.makeText(this, ""+nomertelp, Toast.LENGTH_SHORT).show();
 
         ApiService api = Client.getApiService(Config.BASE_URL_SMSNOTIF);
-        Call<ResponseBody> call = api.kirimNotif(nomertelp, "Terima kasih sudah melakukan pemesanan Obat di Klinik Kita. Silahkan lakukan pembayaran segera sejumlah " + biayaantar.getText().toString() + "ke Rek. 324424234 a.n Kalif Ardy sebelum pukul 16.00");
+        Call<ResponseBody> call = api.kirimNotif(nomertelp, "Terima kasih sudah melakukan pemesanan Obat di Klinik Kita. Silahkan lakukan pembayaran segera sejumlah " + bayartunai.getText().toString() + " ke Rek. 324424234 a.n Kalif Ardy sebelum pukul 16.00");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -179,11 +177,10 @@ public class DetailObatActivity extends AppCompatActivity {
             return;
         }
         quantity = quantity - 1;
-        hargaobat.setText("" + Integer.parseInt(dataHarga) * quantity);
-        perkiraanharga.setText("" + Integer.parseInt(dataHarga) * quantity);
-        biayaantar.setText("" + (5000));
-        totalharga.setText("" + ((Integer.parseInt(dataHarga) * quantity) + 5000));
-        bayartunai.setText("" + ((Integer.parseInt(dataHarga) * quantity) + 5000));
+        hargaobat.setText("Rp. " + Integer.parseInt(dataHarga) * quantity);
+        perkiraanharga.setText("Rp. " + Integer.parseInt(dataHarga) * quantity);
+        totalharga.setText("Rp. " + ((Integer.parseInt(dataHarga) * quantity) + 5000));
+        bayartunai.setText("Rp. " + ((Integer.parseInt(dataHarga) * quantity) + 5000));
 
         display(quantity);
     }
@@ -196,11 +193,10 @@ public class DetailObatActivity extends AppCompatActivity {
         }
 
         quantity = quantity + 1;
-        hargaobat.setText("" + Integer.parseInt(dataHarga) * quantity);
-        perkiraanharga.setText("" + Integer.parseInt(dataHarga) * quantity);
-        biayaantar.setText("" + (5000));
-        totalharga.setText("" + ((Integer.parseInt(dataHarga) * quantity) + 5000));
-        bayartunai.setText("" + ((Integer.parseInt(dataHarga) * quantity) + 5000));
+        hargaobat.setText("Rp. " + Integer.parseInt(dataHarga) * quantity);
+        perkiraanharga.setText("Rp. " + Integer.parseInt(dataHarga) * quantity);
+        totalharga.setText("Rp. " + ((Integer.parseInt(dataHarga) * quantity) + 5000));
+        bayartunai.setText("Rp. " + ((Integer.parseInt(dataHarga) * quantity) + 5000));
 
         display(quantity);
     }
@@ -224,6 +220,8 @@ public class DetailObatActivity extends AppCompatActivity {
         bayartunai = findViewById(R.id.bayartunai);
         btnPesan = findViewById(R.id.btnPesan);
         alamat = (TextView) findViewById(R.id.alamat);
+        placepicker = (CardView) findViewById(R.id.placepicker);
+        ubahLokasi = (TextView) findViewById(R.id.ubah_lokasi);
     }
 }
 
