@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="190dp"
-        android:background="@drawable/bgnd" />
+        android:background="@drawable/abc" />
 
 
     <ScrollView
@@ -34,8 +34,7 @@
             android:id="@+id/logo_klinik"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:src="@drawable/klinik" />
+            android:layout_gravity="center" />
 
         <RelativeLayout
             android:layout_width="wrap_content"
